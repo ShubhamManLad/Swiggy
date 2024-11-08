@@ -1,0 +1,129 @@
+<app-navbar></app-navbar>
+
+<!-- Main Container -->
+<div class="flex flex-col lg:flex-row w-full px-4 md:px-16 lg:px-32 py-8 md:py-12 lg:py-16 gap-8">
+
+    <!-- Address Section -->
+    <div class="flex flex-col lg:w-2/3 border rounded-lg shadow-lg p-6">
+        <h2 class="font-bold text-lg mb-2">Select delivery address</h2>
+        <p class="text-gray-500">You have a saved address in this location</p>
+
+        <!-- Saved Address -->
+        <div class="flex items-center justify-between border rounded-lg p-4 mt-4 shadow-md">
+            <div>
+                <span class="block font-bold text-md">Work</span>
+                <span class="text-sm text-gray-600">VIT VELLORE GATE 1A, Brahmapuram, Tamil Nadu 632014, India</span>
+                <div class="text-green-600 font-bold mt-2">47 MINS</div>
+            </div>
+            <button class="bg-green-600 text-white font-semibold px-4 py-2 rounded-md">DELIVER HERE</button>
+        </div>
+
+        <!-- Add New Address -->
+        <div class="flex items-center justify-between border-dashed border-2 rounded-lg p-4 mt-4 text-center shadow-sm">
+            <div>
+                <span class="block font-bold text-md">Add New Address</span>
+                <div class="flex flex-col py-4 w-full px-4 md:px-8">
+                    <!-- <label for="address" class="font-bold text-md">Enter your address:</label> -->
+                    <input [(ngModel)]="address" type="text" id="address"
+                        class="px-4 py-2 border-2 border-gray-300 rounded-md w-full"
+                        placeholder="Enter your address here" />
+                </div>
+            </div>
+            <button class="border border-green-600 text-green-600 font-semibold px-4 py-2 rounded-md mt-4">ADD NEW</button>
+        </div>
+
+        <div class="flex flex-col border rounded-lg shadow-lg p-6 mt-8 lg:mt-0">
+            <h2 class="font-bold text-lg mb-4">Choose payment method</h2>
+            
+            <!-- Payment Options -->
+            <div class="flex flex-col gap-4 mb-4">
+                <label class="flex items-center cursor-pointer">
+                    <input type="radio" name="paymentMethod" value="Cash on Delivery"
+                           class="mr-2">
+                    <span>Cash on Delivery</span>
+                </label>
+    
+                <label class="flex items-center cursor-pointer">
+                    <input type="radio" name="paymentMethod" value="UPI" 
+                           
+                           class="mr-2">
+                    <span>Pay by UPI</span>
+                </label>
+            </div>
+    
+            <!-- Proceed to Pay Button -->
+            <div class="flex items-end justify-end mt-4">
+                <button class="bg-green-600 text-white font-semibold px-4 py-2 rounded-md" (click)="placeOrder()">PLACE ORDER</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="flex flex-col lg:w-1/3 border rounded-lg shadow-lg p-6">
+        <h2 class="font-bold text-lg mb-4">Order Summary</h2>
+
+        <!-- Cart Items -->
+        <div *ngFor="let foodItem of items" class="flex justify-between items-center mb-4">
+            <div>
+                <span class="block font-bold text-md">{{foodItem.name}}</span>
+                <span class="text-gray-600 text-sm">Customize &gt;</span>
+            </div>
+            <div class="flex items-center">
+                <button class="text-lg font-bold text-gray-700 px-2" (click)="removeItem(foodItem)">−</button>
+                <span class="mx-2">{{foodItem.quantity}}</span>
+                <button class="text-lg font-bold text-gray-700 px-2" (click)="addItem(foodItem)">+</button>
+                <span class="ml-4 font-semibold">₹{{foodItem.price}}</span>
+            </div>
+        </div>
+
+        <div *ngIf="items.length == 0" class="flex flex-col items-center justify-between py-4 w-full ">
+            <span>Your Cart Is Empty</span>
+        </div>
+
+        <div *ngIf="items.length != 0">
+            <!-- Additional Options -->
+            <div class="mt-4 border-t pt-4">
+                <div class="text-sm text-gray-600 mb-2">
+                    <label class="flex items-start">
+                        <input type="checkbox" class="mr-2">
+                        Opt in for No-contact Delivery
+                    </label>
+                    <p class="text-xs">Unwell, or avoiding contact? Partner will safely place the order outside your
+                        door (not for COD).</p>
+                </div>
+                <div class="flex items-center justify-between border-dashed border-2 rounded-lg p-4 text-center shadow-sm">
+                    <div>
+                        <div class="flex flex-col py-4 w-full px-2 md:px-4">
+                            <input type="text" id="coupon"
+                                class="px-4 py-2 border-2 border-gray-300 rounded-md mt-2"
+                                placeholder="Enter Coupon" />
+                        </div>
+                    </div>
+                    <button class="bg-green-600 text-white font-semibold px-2 py-3 rounded-md">APPLY COUPON</button>
+                </div>
+            </div>
+
+            <!-- Bill Details -->
+            <div class="mt-4 border-t pt-4">
+                <div class="flex justify-between text-sm mb-2">
+                    <span>Item Total</span>
+                    <span>₹{{total}}</span>
+                </div>
+                <div class="flex justify-between text-sm text-gray-600 mb-2">
+                    <span>Delivery Fee | 2.5 kms</span>
+                    <span><s>₹25.00</s> <span class="text-green-600 font-bold">FREE</span></span>
+                </div>
+            </div>
+
+            <!-- Total to Pay -->
+            <div class="flex justify-between font-semibold text-lg mt-4">
+                <span>TO PAY</span>
+                <span>₹{{total}}</span>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

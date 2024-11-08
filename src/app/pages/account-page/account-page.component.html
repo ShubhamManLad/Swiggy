@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="flex flex-col px-4 md:px-16 lg:px-32 py-8 md:py-12 lg:py-16 w-full">
+    <span class="font-bold text-left text-2xl lg:mx-32">
+        Welcome {{user.name}}!!
+    </span><br><br>
+    <span class="font-semibold text-left text-xl lg:mx-48">
+        Your Order History
+    </span>
+
+    <div class="flex flex-col items-center justify-center py-4 w-fit lg:mx-48">
+        <div *ngFor="let order of orders" class="w-full flex flex-col md:flex-row justify-between m-4 px-4 md:px-16  rounded-md shadow-md hover:shadow-gray-500">
+            <div class="flex flex-col lg:w-full md:w-9/12 ">
+                <span class="font-bold text-lg">Order No. {{order.id}}</span>
+                <span class="font-bold text-md">Order Total: ${{order.total}}</span>
+                <span>Order Delivery &#64; {{order.address}}</span>
+                <span>Order Placed &#64; {{order.timestamp}}</span>
+
+                <!-- Order Items -->
+                <div *ngFor="let foodItem of order.orderItems" class="w-full flex flex-col md:flex-row justify-between m-4 px-12">
+                    <div class="flex flex-col w-full md:w-9/12">
+                        <span class="font-bold text-lg">{{foodItem.name}}</span>
+                        <span class="font-bold text-md">${{foodItem.price}}</span>
+                        <span>{{foodItem.desc}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, aliquid fugit ratione odit quibusdam a dignissimos quisquam.</span>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <div class="rounded-md w-[100px] h-[100px] md:w-[150px] md:h-[150px] bg-gray-500 overflow-hidden">
+                            <img src="./assets/{{foodItem.id}}-img.avif" width="150px" height="150px" class="rounded-md overflow-clip w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Out Button -->
+    <a href="" class="flex flex-col py-4 w-full items-end no-underline">
+        <button class="bg-orange-400 px-8 py-2 my-4 rounded-md text-white hover:text-black hover:bg-orange-700">Log Out</button>
+    </a>
+</div>
+
+

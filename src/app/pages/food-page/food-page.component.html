@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="flex flex-col items-center justify-between px-6 sm:px-12 md:px-24 lg:px-48 py-4 w-full">
+    <div class="w-full">
+        <span class="font-bold text-2xl">Top restaurants providing {{foodType}}</span>
+    
+        <div class="flex items-center justify-between w-full my-4">
+    
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 items-center justify-center gap-8 w-full">
+                <div *ngFor="let rest of restaurants" class="rounded-md shadow-md hover:shadow-gray-500" (click)="openRestaurant(rest)">
+                    
+                    <div class="rounded-md w-full h-[180px] bg-gray-500 overflow-hidden">
+                        <img src="./assets/{{rest.id}}-img.avif" class="rounded-md overflow-clip w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="flex flex-col mx-4 my-2">
+                        <span class="font-bold">{{rest.name}}</span>
+                        <span class="font-semibold">
+                            <span class="material-icons bg-green-500 text-white text-xs rounded-full px-[3px] py-[2px]">star</span>
+                            {{rest.rating}} . {{rest.time}}
+                        </span>
+                        <span>{{rest.foods}}</span>
+                        <span>{{rest.location}}</span>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="w-full">
+    
+
+    <div class="flex items-center space-x-4 overflow-x-auto my-4">
+        <div *ngFor="let food of foods" class="shadow-md hover:shadow-gray-500 rounded-md flex-none" (click)="openFood(food)">
+            <img src="./assets/{{food}}-img.avif" class="w-36 h-36 md:w-40 md:h-40" alt="Biryani">
+        </div>
+        
+    </div>
+</div>

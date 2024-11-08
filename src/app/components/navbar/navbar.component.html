@@ -1,0 +1,75 @@
+<!-- Navbar -->
+<nav class="flex items-center justify-between bg-white shadow-md px-8 md:px-32 py-4">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+        <a href="/home" class="text-orange-500 text-3xl font-bold">
+            <img src="./assets/logo.avif" width="120px">
+        </a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-8">
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center mx-3">
+            <span class="material-icons">search</span>
+            <a href="/search" class="ml-1 text-black no-underline">Search</a>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center mx-3">
+            <span class="material-icons">local_offer</span>
+            <span class="ml-1 relative">Offers</span>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center mx-3">
+            <span class="material-icons">help_outline</span>
+            <span class="ml-1">Help</span>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center mx-3">
+            <span class="material-icons">shopping_cart</span>
+            <a href="/cart" class="ml-1 text-black no-underline">Cart</a>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center mx-3">
+            <span class="material-icons">account_circle</span>
+            <a href="/account" class="ml-1 text-black no-underline">Account</a>
+            
+        </button>
+    </div>
+
+    <!-- Hamburger Icon for Mobile -->
+    <div class="md:hidden flex items-center">
+        <button (click)="toggleSidebar()" class="text-gray-700 hover:text-black focus:outline-none">
+            <span class="material-icons">menu</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Sidebar (Hidden by Default) -->
+<div
+    [class.translate-x-0]="isSidebarOpen"
+    [class.-translate-x-full]="!isSidebarOpen"
+    class="fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out md:hidden"
+>
+    <div class="flex flex-col h-full p-4">
+        <button (click)="toggleSidebar()" class="self-end mb-4 text-gray-700 hover:text-black focus:outline-none">
+            <span class="material-icons">close</span>
+        </button>
+
+        <a href="/home" class="text-orange-500 text-2xl font-bold mb-8">
+            <img src="./assets/logo.avif" width="120px">
+        </a>
+
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center my-4">
+            <span class="material-icons">search</span>
+            <span class="ml-1">Search</span>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center my-4">
+            <span class="material-icons">local_offer</span>
+            <span class="ml-1 relative">Offers</span>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center my-4">
+            <span class="material-icons">help_outline</span>
+            <span class="ml-1">Help</span>
+        </button>
+        <button class="text-gray-700 hover:text-black hover:font-semibold flex items-center my-4">
+            <span class="material-icons">shopping_cart</span>
+            <a href="/cart" class="ml-1 text-black no-underline">Cart</a>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- Navbar -->
+<div class="flex items-center justify-between bg-white p-4 shadow-md">
+    <img src="./assets/logo.avif" width="100px" height="50px">
+    <div class="flex space-x-4">
+        <button [ngClass]="loginState ? stateSelectStyle : stateUnSelectStyle" (click)="toggleState()">Login</button>
+        <button [ngClass]="loginState ? stateUnSelectStyle : stateSelectStyle" (click)="toggleState()">Sign up</button>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="flex flex-col-reverse lg:flex-row w-full justify-between items-center p-4">
+    <div class="flex flex-col my-16 lg:my-56 w-full lg:w-1/2 ml-0 lg:ml-16 items-center lg:items-start">
+        <div class="text-orange-500 text-3xl font-bold my-4 text-center lg:text-left">
+            <span>{{state}}</span>
+        </div>
+
+        <div class="flex flex-col items-center max-w-lg w-full">
+            <!-- Conditional Name Field for Sign-up -->
+            <input *ngIf="!loginState" [(ngModel)]="name" type="text" placeholder="Name"
+                class="m-2 px-4 py-2 w-full border-2 border-gray-500 rounded-lg">
+
+            <!-- Email and Password Fields -->
+            <input [(ngModel)]="email" type="email" placeholder="Email ID"
+                class="m-2 px-4 py-2 w-full border-2 border-gray-500 rounded-lg">
+            <input [(ngModel)]="password" type="password" placeholder="Password"
+                class="m-2 px-4 py-2 w-full border-2 border-gray-500 rounded-lg">
+
+            <!-- Action Button -->
+            <button (click)="loginState ? signIn() : signUp()" 
+                    class="bg-orange-400 p-2 my-4 rounded-md w-full text-white hover:text-black hover:bg-orange-700">
+                {{state}}
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Image (Hidden on Small Screens) -->
+    <img src="./assets/bg-img.avif" width="50%" class="hidden lg:block">
+</div>
