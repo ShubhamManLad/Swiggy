@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class DataStorageService {
 
-  currentUser : any = "";
-
   foodsTypes : string[] = ['biryani', 'burger', 'chinese', 'cake', 'pizza'];
 
   restaurants : any[] = [
@@ -270,10 +268,4 @@ export class DataStorageService {
 
   ];
 
-
-  loginUser(){
-    
-  }
-
-  // userCart : any[] =[];
 }

@@ -38,9 +38,17 @@
                 <div class="rounded-md w-[150px] h-[150px] bg-gray-500 overflow-hidden">
                     <img src="./assets/{{foodItem.id}}-img.avif" width="150px" height="150px" class="rounded-md overflow-clip w-full h-full object-cover">
                 </div>
-
                 <div class="flex flex-row items-center justify-center py-4 -my-8 w-full">
-                    <button class="rounded-md shadow-md px-4 py-2 text-green-600 font-bold bg-white hover:shadow-gray-500" (click)="addToCart(foodItem)">ADD</button>
+                    <button
+                        class="rounded-md shadow-md px-2 py-2 font-bold bg-white hover:bg-gray-200"
+                        [ngClass]="{'text-red-500': isFav(foodItem), 'text-gray-500': !isFav(foodItem)}"
+                        (click)="toggleFavourites(foodItem)">
+                        <span class="material-icons">
+                            favorite
+                        </span>
+                    </button>
+        
+                    <button class="rounded-md shadow-md px-4 py-2 text-green-600 font-bold bg-white hover:shadow-gray-500 ml-2" (click)="addToCart(foodItem)">ADD</button>
                     <div class="rounded-md shadow-md mx-1 ">
                         <span>{{foodItem.quantity}}</span>
                     </div>

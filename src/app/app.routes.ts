@@ -6,6 +6,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { FoodPageComponent } from './pages/food-page/food-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { SearchComponent } from './pages/search/search.component';
+import { FavPageComponent } from './pages/fav-page/fav-page.component';
 
 export const routes: Routes = [
     {path:"", component:LoginPageComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:"food/:id", component: FoodPageComponent},
     {path:"account", component: AccountPageComponent},
     {path:"search", component: SearchComponent},
+    {path:"fav",component:FavPageComponent}
     
 ];
